@@ -4,7 +4,7 @@ import { Poppins } from 'next/font/google'
 import Navbar from '@/components/Navbar'
 import { Analytics } from "@vercel/analytics/react"
 
-const poppins = Poppins({ 
+const poppins = Poppins({
   weight: ['400', '600', '700'],
   subsets: ['latin'],
   display: 'swap',
@@ -21,13 +21,13 @@ export default function RootLayout({
   children: React.ReactNode
 }) {
   return (
-    <div lang="en">
+    <html lang="en">
       <body className={`${poppins.className} bg-[#000c66] text-white`}>
         <div className="fixed inset-0 z-[-2] w-full h-full overflow-hidden">
-          <video 
-            autoPlay 
-            loop 
-            muted 
+          <video
+            autoPlay
+            loop
+            muted
             playsInline
             className="absolute min-w-full min-h-full object-cover"
           >
@@ -35,7 +35,7 @@ export default function RootLayout({
             Your browser does not support the video tag.
           </video>
         </div>
-        <div 
+        <div
           className="fixed inset-0 z-[-1] bg-cover bg-center bg-no-repeat"
           style={{
             backgroundColor: "rgba(0, 12, 102, 0.8)"
@@ -54,7 +54,7 @@ export default function RootLayout({
         </div>
         <Analytics />
       </body>
-    </div>
+    </html>
   )
 }
 

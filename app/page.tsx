@@ -106,9 +106,9 @@ export default function Home() {
                   ) : null}
                   <Image
                     src={project.image || "/placeholder.svg"}
-                    alt={project.title}
-                    layout="fill"
-                    objectFit="cover"
+                    fill
+                    style={{ objectFit: 'cover' }}
+                    alt="Project Image"
                     className={project.video ? "group-hover:opacity-0 transition-opacity duration-300" : ""}
                   />
                 </div>
