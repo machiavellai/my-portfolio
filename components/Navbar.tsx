@@ -36,12 +36,12 @@ const Navbar = () => {
         </Link>
         <ul className="flex space-x-4">
           <li>
-            <a href="#about" className="hover:text-[#7ec8e3] transition-colors">
+            <a href="/about" className="hover:text-[#7ec8e3] transition-colors">
               About
             </a>
           </li>
           <li>
-            <a href="#projects" className="hover:text-[#7ec8e3] transition-colors">
+            <a href="/projects" className="hover:text-[#7ec8e3] transition-colors">
               Projects
             </a>
           </li>
@@ -51,7 +51,7 @@ const Navbar = () => {
             </Link>
           </li>
           <li>
-            <a href="#contact" className="hover:text-[#7ec8e3] transition-colors">
+            <a href="/contact" className="hover:text-[#7ec8e3] transition-colors">
               Contact
             </a>
           </li>

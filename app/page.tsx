@@ -165,7 +165,7 @@ export default function Home() {
 
               <div className="space-y-4">
                 <a
-                  href="https://github.com/yourusername"
+                  href="https://github.com/machiavellai"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-white hover:text-[#7ec8e3] transition-colors p-3 rounded-lg hover:bg-[#000c66]"
@@ -176,7 +176,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="https://linkedin.com/in/yourusername"
+                  href="https://www.linkedin.com/in/victor-oghene-b256171b6/"
                   target="_blank"
                   rel="noopener noreferrer"
                   className="flex items-center gap-3 text-white hover:text-[#7ec8e3] transition-colors p-3 rounded-lg hover:bg-[#000c66]"
@@ -198,7 +198,7 @@ export default function Home() {
                 </a>
 
                 <a
-                  href="mailto:your.email@example.com"
+                  href="oghenevictor54p@gmail.com"
                   className="flex items-center gap-3 text-white hover:text-[#7ec8e3] transition-colors p-3 rounded-lg hover:bg-[#000c66]"
                 >
                   <Mail className="w-6 h-6" />

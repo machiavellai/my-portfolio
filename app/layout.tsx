@@ -48,7 +48,7 @@ export default function RootLayout({
           </main>
           <footer className="bg-[#050a30] text-white p-4 mt-8">
             <div className="container mx-auto text-center">
-              <p>&copy; 2023 Oghene Victor. All rights reserved.</p>
+              <p>&copy; 2025 Oghene Victor. All rights reserved.</p>
             </div>
           </footer>
         </div>
