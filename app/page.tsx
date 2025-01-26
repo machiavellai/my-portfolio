@@ -197,14 +197,7 @@ export default function Home() {
                   <ArrowRight className="w-4 h-4 ml-auto" />
                 </a>
 
-                <a
-                  href="oghenevictor54p@gmail.com"
-                  className="flex items-center gap-3 text-white hover:text-[#7ec8e3] transition-colors p-3 rounded-lg hover:bg-[#000c66]"
-                >
-                  <Mail className="w-6 h-6" />
-                  <span className="font-medium">Send an Email</span>
-                  <ArrowRight className="w-4 h-4 ml-auto" />
-                </a>
+
               </div>
             </div>
 
