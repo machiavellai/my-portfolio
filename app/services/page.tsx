@@ -25,7 +25,26 @@ export default function ServicesPage() {
   return (
     <div className="min-h-screen bg-[#000c66] text-white py-16 px-4 sm:px-6 lg:px-8">
       <div className="max-w-7xl mx-auto">
-        <h1 className="text-4xl sm:text-5xl font-bold text-center mb-12 text-[#7ec8e3]">My Services</h1>
+        <div className="text-center max-w-3xl mx-auto mb-16">
+          <h1 className="text-4xl sm:text-5xl font-bold mb-6 text-[#7ec8e3]">My Services</h1>
+          <p className="text-xl mb-8">
+            Ready to bring your digital vision to life? I am available to help build innovative solutions that will
+            transform your ideas into reality.
+          </p>
+          <div className="bg-[#050a30] p-8 rounded-lg shadow-lg">
+            <h2 className="text-2xl font-bold mb-4 text-[#7ec8e3]">Looking to Build Your MVP?</h2>
+            <p className="text-lg mb-6">
+              I specialize in helping startups build reliable and scalable MVPs for both web and mobile platforms. Let me
+              turn your concept into a working product that will impress investors and delight users.
+            </p>
+            <Link
+              href="/#contact"
+              className="inline-block bg-[#7ec8e3] text-[#050a30] px-8 py-3 rounded-lg font-semibold hover:bg-[#0000ff] hover:text-white transition-colors"
+            >
+              Start Your Project
+            </Link>
+          </div>
+        </div>
 
         <div className="grid gap-8 md:grid-cols-2 lg:grid-cols-3 max-w-4xl mx-auto">
           <ServiceCard
@@ -55,25 +74,20 @@ export default function ServicesPage() {
               "Docker",
             ]}
           />
-          {/*Removed Service Cards*/}
-          {/*<ServiceCard
-            icon={<Database className="w-12 h-12 text-[#7ec8e3]" />}
-            title="Database Design"
-            description="Designing and implementing efficient database structures for optimal data management and retrieval."
-            technologies={["MongoDB", "SQL", "Database Optimization"]}
-          />
-          <ServiceCard
-            icon={<Code className="w-12 h-12 text-[#7ec8e3]" />}
-            title="Full-Stack Integration"
-            description="Seamlessly integrating front-end and back-end technologies to create comprehensive, end-to-end solutions."
-            technologies={["Full-Stack Development", "API Integration", "Third-party Services"]}
-          />
-          <ServiceCard
-            icon={<Smartphone className="w-12 h-12 text-[#7ec8e3]" />}
-            title="UI/UX Design"
-            description="Crafting intuitive and visually appealing user interfaces for web and mobile applications."
-            technologies={["Figma", "Adobe XD", "Responsive Design"]}
-          />*/}
+        </div>
+
+        <div className="mt-16 text-center">
+          <h2 className="text-3xl font-bold mb-8 text-[#7ec8e3]">Ready to Get Started?</h2>
+          <p className="text-lg mb-8 max-w-2xl mx-auto">
+            Whether you're a startup looking to build your MVP or an established business seeking digital
+            transformation, I'm here to help you achieve your goals.
+          </p>
+          <Link
+            href="/#contact"
+            className="inline-block bg-[#0000ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors"
+          >
+            Let's Discuss Your Project
+          </Link>
         </div>
 
         <div className="mt-16">

@@ -32,26 +32,26 @@ const Navbar = () => {
   return (
     <nav className="bg-[#050a30] w-full text-blue p-4 rounded-full mx-4 my-4 shadow-lg">
       <div className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="flex items-center">
+      <Link href="/" className="flex items-center">
           <span className="text-3xl font-bold text-[#7ec8e3] logo-text">Velli._</span>
         </Link>
-        <ul className="flex space-x-4">
-          <li>
+        <ul className="flex flex-row sm:flex-row space-y-0 sm:space-y-0 sm:space-x-4 mt-4 sm:mt-0 w-full sm:w-auto">
+          <li className="w-full sm:w-auto text-center sm:text-left">
             <a href="#about" className="hover:text-[#7ec8e3] transition-colors">
               About
             </a>
           </li>
-          <li>
+          <li className="w-full sm:w-auto text-center sm:text-left">
             <a href="#projects" className="hover:text-[#7ec8e3] transition-colors">
               Projects
             </a>
           </li>
-          <li>
+          <li className="w-full sm:w-auto text-center sm:text-left">
             <Link href="/services" className="hover:text-[#7ec8e3] transition-colors">
               Services
             </Link>
           </li>
-          <li>
+          <li className="w-full sm:w-auto text-center sm:text-left">
             <a href="#contact" className="hover:text-[#7ec8e3] transition-colors">
               Contact
             </a>
