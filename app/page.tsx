@@ -12,22 +12,25 @@ export default function Home() {
         <p className="text-lg sm:text-xl md:text-2xl text-white">A DIGITAL SOLUTION INNOVATOR</p>
       </section>
 
+      <div className="w-full max-w-4xl mx-auto">
+        <Image
+          src="https://hebbkx1anhila5yf.public.blob.vercel-storage.com/custom-mYCFd2IMCj33MDqCfLHPZ3qwKemZS9.png"
+          alt="Velli D Creator - Software Engineer Stack"
+          width={1200}
+          height={400}
+          className="rounded-lg shadow-xl"
+          priority
+        />
+      </div>
+
       <section id="about" className="pt-16">
         <h2 className="text-3xl sm:text-4xl font-bold mb-6 text-[#7ec8e3]">About Me</h2>
         <div className="space-y-6">
           <p className="text-lg">
-            Hello! I am Oghene Victor, a passionate full-stack developer with expertise in web and mobile technologies. I
-            love creating efficient, scalable, and user-friendly applications that innovate digital solutions.
-          </p>
-          <p className="text-lg">
-            With a strong foundation in both front-end and back-end development, I specialize in building robust web
-            applications using React, Next.js, and Node.js. My experience extends to mobile app development with React
-            Native, allowing me to create seamless cross-platform experiences.
-          </p>
-          <p className="text-lg">
-            I am deeply committed to writing clean, maintainable code and constantly staying updated with the latest
-            industry trends and best practices. My goal is to deliver high-quality solutions that not only meet but
-            exceed client expectations.
+            As a Digital Solutions Innovator, I specialize in building scalable websites and mobile applications that
+            streamline your business and individual goals. My expertise lies in helping companies scale efficiently and
+            build their Minimum Viable Products (MVPs). With a focus on cutting-edge technologies and best practices, I
+            deliver solutions that drive growth and innovation.
           </p>
         </div>
       </section>
