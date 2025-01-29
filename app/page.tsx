@@ -1,7 +1,7 @@
 import Image from "next/image"
 import ExpertiseSection from "@/components/ExpertiseSection"
 import AnimatedProjectsHeading from "@/components/AnimatedProjectsHeading"
-import { Github, ExternalLink, Linkedin, Twitter, Mail, ArrowRight } from "lucide-react"
+import { Github, ExternalLink, Linkedin, Twitter, ArrowRight } from "lucide-react"
 // import firebase from "firebase/compat/app"
 export default function Home() {
   return (
