@@ -79,14 +79,14 @@ export default function ServicesPage() {
         <div className="mt-16 text-center">
           <h2 className="text-3xl font-bold mb-8 text-[#7ec8e3]">Ready to Get Started?</h2>
           <p className="text-lg mb-8 max-w-2xl mx-auto">
-            Whether you're a startup looking to build your MVP or an established business seeking digital
-            transformation, I'm here to help you achieve your goals.
+            Whether you are a startup looking to build your MVP or an established business seeking digital
+            transformation, I am here to help you achieve your goals.
           </p>
           <Link
             href="/#contact"
             className="inline-block bg-[#0000ff] text-white px-8 py-3 rounded-lg font-semibold hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors"
           >
-            Let's Discuss Your Project
+            Let us Discuss Your Project
           </Link>
         </div>
 
