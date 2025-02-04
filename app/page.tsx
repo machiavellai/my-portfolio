@@ -243,6 +243,8 @@ export default function Home() {
                 ></textarea>
               </div>
               <button
+                onClick={
+                  () => { }}
                 type="submit"
                 className="w-full sm:w-auto bg-[#0000ff] text-white px-6 py-3 rounded hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors flex items-center justify-center gap-2"
               >
