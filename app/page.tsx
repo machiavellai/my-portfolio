@@ -49,7 +49,6 @@ export default function Home() {
         body: JSON.stringify(formData),
       });
 
-      //logic for sending and storing the data in the mail form
       if (response.status === 200) {
         setFormState({ success: true, error: false, loading: false });
         setFormData({ Name: "", email: "", message: "" });
@@ -270,66 +269,80 @@ export default function Home() {
             </div>
 
             {/* Contact Form */}
-            <form className="space-y-6">
-              <div>
-                <label htmlFor="Name" className="block text-[#7ec8e3] mb-2">
-                  Name
-                </label>
-                <input
-                  type="text"
-                  id="name"
-                  name="name"
-                  className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="E-mail" className="block text-[#7ec8e3] mb-2">
-                  E-mail
-                </label>
-                <input
-                  type="email"
-                  id="email"
-                  name="email"
-                  className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
-                  required
-                />
-              </div>
-              <div>
-                <label htmlFor="Message" className="block text-[#7ec8e3] mb-2">
-                  Message
-                </label>
-                <textarea
-                  id="message"
-                  name="message"
-                  rows={4}
-                  className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
-                  required
-                ></textarea>
-              </div>
-              <button
-                type="submit"
-                className="w-full sm:w-auto bg-[#0000ff] text-white px-6 py-3 rounded hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors flex items-center justify-center gap-2"
-              >
-                Send Message
-                <ArrowRight className="w-4 h-4" />
-              </button>
-              {formState.loading && (
-                <div className="font-bold tracking-wider mt-6 bg-primary rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
-                  Processing... Please Wait
+            {emailSubmitted ? (
+              <p className="text-green-500 text-sm mt-2">
+                Email sent successfully!
+              </p>
+            ) : (
+              <form className="space-y-6" onSubmit={handleSubmit}>
+                <div>
+                  <label htmlFor="Name" className="block text-[#7ec8e3] mb-2">
+                    Name
+                  </label>
+                  <input
+                    name="Name"
+                    type="text"
+                    id="name"
+                    value={formData.Name}
+                    placeholder="clark kent"
+                    onChange={handleInputChange}
+                    className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
+                    required
+                  />
                 </div>
-              )}
-              {formState.error && (
-                <div className="font-bold tracking-wider mt-6 bg-red-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
-                  An Error Occurred, Try Again.
+                <div>
+                  <label htmlFor="E-mail" className="block text-[#7ec8e3] mb-2">
+                    E-mail
+                  </label>
+                  <input
+                    type="email"
+                    id="email"
+                    name="email"
+                    value={formData.email}
+                    placeholder="your email..."
+                    onChange={handleInputChange}
+                    className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
+                    required
+                  />
                 </div>
-              )}
-              {formState.success && (
-                <div className="font-bold tracking-wider mt-6 bg-green-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
-                  Message Sent
+                <div>
+                  <label htmlFor="Message" className="block text-[#7ec8e3] mb-2">
+                    Message
+                  </label>
+                  <textarea
+                    id="message"
+                    name="message"
+                    value={formData.message}
+                    onChange={handleInputChange}
+                    rows={5}
+                    className="w-full p-3 rounded bg-[#000c66] text-white border border-gray-800 focus:border-[#7ec8e3] focus:ring-1 focus:ring-[#7ec8e3] transition-colors"
+                    required
+                  ></textarea>
                 </div>
-              )}
-            </form>
+                <button
+                  type="submit"
+                  className="w-full sm:w-auto bg-[#0000ff] text-white px-6 py-3 rounded hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors flex items-center justify-center gap-2"
+                >
+                  Send Message
+                  <ArrowRight className="w-4 h-4" />
+                </button>
+                {formState.loading && (
+                  <div className="font-bold tracking-wider mt-6 bg-primary rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                    Processing... Please Wait
+                  </div>
+                )}
+                {formState.error && (
+                  <div className="font-bold tracking-wider mt-6 bg-red-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                    An Error Occurred, Try Again.
+                  </div>
+                )}
+                {formState.success && (
+                  <div className="font-bold tracking-wider mt-6 bg-green-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                    Message Sent
+                  </div>
+                )}
+              </form>
+            )}
           </div>
         </div>
       </section>
