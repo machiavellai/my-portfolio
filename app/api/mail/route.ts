@@ -1,4 +1,5 @@
 import { NextApiRequest, NextApiResponse } from "next";
+import { NextRequest, NextResponse } from "next/server";
 import { createTransport } from "nodemailer";
 
 interface MailData {
@@ -7,18 +8,14 @@ interface MailData {
     message: string;
 }
 
-export default async function handler(req: NextApiRequest, res: NextApiResponse) {
-    if (req.method === 'POST') {
-        const body = req.body as string;
-        const data: MailData = JSON.parse(body);
+export async function POST(req: NextRequest, res: NextResponse) {
 
-        console.log(data);
+    try {
+        const data: MailData = await req.json();
 
         if (!data.Name || !data.email || !data.message) {
-            res.status(400).json({ error: "All fields are required" });
-            return;
+            return NextResponse.json({ error: "All fields are required" }, { status: 400 });
         }
-
         const transporter = createTransport({
             service: "gmail",
             auth: {
@@ -33,29 +30,27 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
             replyTo: data.email,
             text: data.message,
             html: `
-        <h1>New message from ${data.email}</h1>
-        <h2>Name:</h2>
-        <h3>${data.Name}</h3>    
-        <h2>Message:</h2>
-        <h3>${data.message}</h3>
-      `,
+             <div style="font-family: Arial, sans-serif; color: #333;">
+                <h1 style="color: #007BFF;">New message from ${data.email}</h1>
+                  <h2 style="margin-bottom: 5px;">Name:</h2>
+                <p style="margin-top: 0;">${data.Name}</p>    
+                 <h2 style="margin-bottom: 5px;">Message:</h2>
+                <p style="margin-top: 0;">${data.message}</p>
+            </div>
+            `,
         };
 
-        try {
-            // Send email
-            await transporter.sendMail(mailOptions);
-            res.status(200).json({ message: "Email sent" });
-        } catch (error) {
-            //narrow down the type of error 
-            // 
-            if (error instanceof Error) {
-                res.status(500).json({ error: error.message });
-            } else {
-                res.status(500).json({ error: "An unexpected error occurred" });
-            }
+        await transporter.sendMail(mailOptions);
+        return NextResponse.json({ message: "Email sent" }, { status: 200 });
+    } catch (error) {
+        if (error instanceof Error) {
+            return NextResponse.json({ error: error.message }, { status: 500 });
+        } else {
+            return NextResponse.json({ error: "An unexpected error occurred" }, { status: 500 });
         }
-    } else {
-        res.setHeader('Allow', ['POST']);
-        res.status(405).end(`Method ${req.method} Not Allowed`);
     }
 }
+
+export const config = {
+    runtime: 'edge',
+};
