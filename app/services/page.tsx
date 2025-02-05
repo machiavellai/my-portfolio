@@ -16,9 +16,6 @@ type ProjectCardProps = {
   url: string;
 };
 
-// title, description, technologies, url
-
-
 export default function ServicesPage() {
 
 
