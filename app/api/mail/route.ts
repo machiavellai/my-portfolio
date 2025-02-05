@@ -2,9 +2,8 @@ import { NextApiRequest, NextApiResponse } from "next";
 import { createTransport } from "nodemailer";
 
 interface MailData {
+    Name: string;
     email: string;
-    fullName: string;
-    subject: string;
     message: string;
 }
 
@@ -15,7 +14,7 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
 
         console.log(data);
 
-        if (!data.email || !data.fullName || !data.subject || !data.message) {
+        if (!data.Name || !data.email || !data.message) {
             res.status(400).json({ error: "All fields are required" });
             return;
         }
@@ -26,25 +25,17 @@ export default async function handler(req: NextApiRequest, res: NextApiResponse)
                 user: "oghenevictor54p@gmail.com",
                 pass: process.env.SMTP_PASSWORD,
             },
-            // For localhost
-            // tls: {
-            //     // do not fail on invalid certs
-            //     rejectUnauthorized: false,
-            // },
         });
 
         const mailOptions = {
             from: data.email,
             to: "oghenevictor54p@gmail.com",
             replyTo: data.email,
-            subject: `${data.subject} — Message From victorOghene.com`,
             text: data.message,
             html: `
         <h1>New message from ${data.email}</h1>
         <h2>Name:</h2>
-        <h3>${data.fullName}</h3>
-        <h2>Subject:</h2>
-        <h3>${data.subject}</h3>
+        <h3>${data.Name}</h3>    
         <h2>Message:</h2>
         <h3>${data.message}</h3>
       `,

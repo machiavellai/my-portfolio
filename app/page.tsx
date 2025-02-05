@@ -1,9 +1,74 @@
+"use client"
+
 import Image from "next/image"
 import ExpertiseSection from "@/components/ExpertiseSection"
 import AnimatedProjectsHeading from "@/components/AnimatedProjectsHeading"
 import { Github, ExternalLink, Linkedin, Twitter, ArrowRight } from "lucide-react"
+import { ChangeEvent, FormEvent, useState } from "react";
 // import firebase from "firebase/compat/app"
+
+
+interface FormData {
+  Name: string;
+  email: string;
+  message: string;
+}
+
+interface FormState {
+  success: boolean;
+  error: boolean;
+  loading: boolean;
+}
+
 export default function Home() {
+
+  const [emailSubmitted, setEmailSubmitted] = useState<boolean>(false);
+
+  const [formData, setFormData] = useState<FormData>({
+    Name: "",
+    email: "",
+    message: "",
+  });
+
+  const [formState, setFormState] = useState<FormState>({
+    success: false,
+    error: false,
+    loading: false,
+  });
+
+  const handleSubmit = async (e: FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setFormState({ success: false, error: false, loading: true });
+    try {
+      const response = await fetch("/api/mail", {
+        method: "POST",
+        headers: {
+          Accept: "application/json, text/plain, */*",
+          "Content-Type": "application/json",
+        },
+        body: JSON.stringify(formData),
+      });
+
+      //logic for sending and storing the data in the mail form
+      if (response.status === 200) {
+        setFormState({ success: true, error: false, loading: false });
+        setFormData({ Name: "", email: "", message: "" });
+      } else {
+        setFormState({ success: false, error: true, loading: false });
+      }
+    } catch (error) {
+      console.log("An Error Occurred: ", error);
+      setFormState({ success: false, error: true, loading: false });
+    }
+  };
+  const handleInputChange = (e: ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { name, value } = e.target;
+    setFormData({
+      ...formData,
+      [name]: value,
+    });
+  };
+
   return (
     <div className="space-y-16 px-4 sm:px-6 lg:px-8">
       <section className="h-screen flex flex-col justify-center items-center text-center">
@@ -207,7 +272,7 @@ export default function Home() {
             {/* Contact Form */}
             <form className="space-y-6">
               <div>
-                <label htmlFor="name" className="block text-[#7ec8e3] mb-2">
+                <label htmlFor="Name" className="block text-[#7ec8e3] mb-2">
                   Name
                 </label>
                 <input
@@ -219,8 +284,8 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="email" className="block text-[#7ec8e3] mb-2">
-                  Email
+                <label htmlFor="E-mail" className="block text-[#7ec8e3] mb-2">
+                  E-mail
                 </label>
                 <input
                   type="email"
@@ -231,7 +296,7 @@ export default function Home() {
                 />
               </div>
               <div>
-                <label htmlFor="message" className="block text-[#7ec8e3] mb-2">
+                <label htmlFor="Message" className="block text-[#7ec8e3] mb-2">
                   Message
                 </label>
                 <textarea
@@ -243,14 +308,27 @@ export default function Home() {
                 ></textarea>
               </div>
               <button
-                onClick={
-                  () => { }}
                 type="submit"
                 className="w-full sm:w-auto bg-[#0000ff] text-white px-6 py-3 rounded hover:bg-[#7ec8e3] hover:text-[#050a30] transition-colors flex items-center justify-center gap-2"
               >
                 Send Message
                 <ArrowRight className="w-4 h-4" />
               </button>
+              {formState.loading && (
+                <div className="font-bold tracking-wider mt-6 bg-primary rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                  Processing... Please Wait
+                </div>
+              )}
+              {formState.error && (
+                <div className="font-bold tracking-wider mt-6 bg-red-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                  An Error Occurred, Try Again.
+                </div>
+              )}
+              {formState.success && (
+                <div className="font-bold tracking-wider mt-6 bg-green-500 rounded-sm text-center py-4 px-4 text-xl text-white mb-3">
+                  Message Sent
+                </div>
+              )}
             </form>
           </div>
         </div>
